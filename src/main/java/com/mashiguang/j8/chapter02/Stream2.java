@@ -28,4 +28,14 @@ public class Stream2 {
         System.out.println("count: "+summary.getCount());
 
     }
+
+    @Test
+    public void test2() throws IOException {
+        List<String> words = Files.readAllLines(Paths.get("./src/main/resources/words.txt"));
+
+        List<String> words_uppercase = words.stream().map(String::toUpperCase).collect(Collectors.toList());
+
+        System.out.println(words_uppercase);
+
+    }
 }

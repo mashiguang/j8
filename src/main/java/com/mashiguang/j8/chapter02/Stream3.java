@@ -38,4 +38,45 @@ public class Stream3 {
 
         languageNames.forEach((key, value) -> System.out.println(key + ", " +value));
     }
+
+    @Test
+    public void test3() throws IOException {
+
+        Stream<Locale> locals = Stream.of(Locale.getAvailableLocales());
+        String[] languages = locals.map(l -> l.getDisplayCountry()+l.getCountry()).toArray(String[]::new);
+
+        for (String language : languages) {
+            System.out.println(language);
+        }
+    }
+
+    @Test
+    public void test4() throws IOException {
+
+        Locale[] locales = Locale.getAvailableLocales();
+
+        //to List
+        Map<String, List<Locale>> country2List = Stream.of(locales).collect(Collectors.groupingBy(Locale::getDisplayCountry));
+        country2List.forEach((key, list) -> System.out.println(key));
+
+        //to Set
+        Map<String, Set<Locale>> country2set = Stream.of(locales).collect(Collectors.groupingBy(Locale::getDisplayCountry, Collectors.toSet()));
+        country2set.forEach((key, list) -> System.out.println(key));
+
+    }
+
+    @Test
+    public void test5() throws IOException {
+
+        Stream<Locale> locals = Stream.of(Locale.getAvailableLocales());
+
+        Map<Boolean, List<Locale>> enAndOthers = locals.collect(Collectors.partitioningBy(l -> "en".equals(l.getLanguage())));
+
+        //所有说英语的国家
+        enAndOthers.get(true).forEach(l -> System.out.println(l.getDisplayCountry()));
+
+        System.out.println("no english:");
+        //不说英语的国家
+        enAndOthers.get(false).forEach(l -> System.out.println(l.getDisplayCountry()));
+    }
 }

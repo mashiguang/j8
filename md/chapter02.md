@@ -11,6 +11,7 @@
 - Predicate 是一个接受一个参数，并返回boolean的函数。
 
 **<R> Stream<R> map(Function<? super T, ? extends R> mapper);**
+- map对流中每一个元素应用一个函数，并将返回结果收集到一个新的流中。
 - Function 是一个接受`T类型参数`，并返回`R类型对象`的函数。
 
 **<R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);**
@@ -57,4 +58,13 @@
 String result = optionalString.orElseGet(() -> "other string");
 ```
 **2.7.3 使用flatMap来组合可选值函数。这一节没看明白**
+
+## 流终止操作 terminal operation
+
+**void forEach(Consumer<? super T> var1);**
+- 在并行流中，forEach不保证元素被遍历到的顺序
+- 非并行流中，forEach遍历的顺序即是流中元素原有的顺序
+
+**void forEachOrdered(Consumer<? super T> var1);**
+- 即使在并行流中，forEachOrdered遍历的顺序还是流中元素原有的顺序
 
