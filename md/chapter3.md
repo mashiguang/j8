@@ -1,0 +1,25 @@
+
+## java.util.function.*函数式接口分类
+- Consumer
+    - 有参数
+    - 无返回
+    - accept(T t, U u)
+- Function
+    - 有参数
+    - 有返回
+    - R apply(T t, U u)
+- Supplier
+    - 无参数
+    - 有返回
+    - T get()
+- Predicate
+    - 有参数
+    - 返回boolean
+    - boolean test(T t)
+- Operator
+    - UnaryOperator extends Function
+    - BinaryOperator extends BiFunction
+    - DoubleUnaryOperator
+        - 元始类型的单参数函数接口，类似的还有IntUnaryOperator等
+    - DoubleBinaryOperator
+        - 元始类型的双参数函数接口
