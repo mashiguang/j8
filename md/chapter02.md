@@ -68,3 +68,20 @@ String result = optionalString.orElseGet(() -> "other string");
 **void forEachOrdered(Consumer<? super T> var1);**
 - 即使在并行流中，forEachOrdered遍历的顺序还是流中元素原有的顺序
 
+## java.util.function.*函数式接口分类
+- Consumer
+    - 有参数
+    - 无返回
+    - accept(T t, U u)
+- Function
+    - 有参数
+    - 有返回
+    - R apply(T t, U u)
+- Supplier
+    - 无参数
+    - 有返回
+    - T get()
+- Predicate
+    - 有参数
+    - 返回boolean
+    - boolean test(T t)
