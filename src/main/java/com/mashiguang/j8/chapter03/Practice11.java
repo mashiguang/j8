@@ -30,8 +30,8 @@ public class Practice11 extends Application{
         Image image = new Image("dog1.jpg");
         Image newImage = transform(image,
                 (x, y, c) -> {
-                    if (x <= 20) return Color.WHITE;
-                    if (y <= 20) return Color.WHITE;
+                    if (x <= 20) return Color.BLACK;
+                    if (y <= 20) return Color.BLACK;
                     return c;
                 }
         );
